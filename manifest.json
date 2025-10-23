@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Status Overlay",
+  "version": "1.0.0",
+  "description": "Overlay on chatgpt.com that shows statuses of all ChatGPT tabs and lets you jump to them.",
+  "permissions": ["tabs", "tabGroups", "notifications", "system.display"],
+  "host_permissions": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "ChatGPT Status Overlay" },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+      "js": ["overlay.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
